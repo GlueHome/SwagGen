@@ -7,7 +7,7 @@ import Foundation
 
 public class APIRequest<ResponseType: APIResponseValue> {
 
-    public let service: APIService<ResponseType>
+    public let service: APIEndpoint<ResponseType>
     public private(set) var queryParameters: [String: Any]
     public private(set) var formParameters: [String: Any]
     public let encodeBody: (() throws -> Data)?

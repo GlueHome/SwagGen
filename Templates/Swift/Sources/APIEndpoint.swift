@@ -1,6 +1,6 @@
 {% include "Includes/Header.stencil" %}
 
-public struct APIService<ResponseType: APIResponseValue> {
+public struct APIEndpoint<ResponseType: APIResponseValue> {
 
     public let id: String
     public let tag: String
@@ -21,7 +21,7 @@ public struct APIService<ResponseType: APIResponseValue> {
     }
 }
 
-extension APIService: CustomStringConvertible {
+extension APIEndpoint: CustomStringConvertible {
 
     public var name: String {
         return "\(tag.isEmpty ? "" : "\(tag).")\(id)"
