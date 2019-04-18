@@ -21,7 +21,7 @@ install: build
 
 uninstall:
 	rm -f $(INSTALL_PATH)
-	rm -f $(SHARE_PATH)
+	rm -rf $(SHARE_PATH)
 
 format_code:
 	swiftformat Tests --wraparguments beforefirst --stripunusedargs closure-only --header strip --disable blankLinesAtStartOfScope
