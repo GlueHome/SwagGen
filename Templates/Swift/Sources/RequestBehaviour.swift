@@ -164,6 +164,12 @@ public struct AnyResponseValue: APIResponseValue, CustomDebugStringConvertible, 
     }
 }
 
+extension APIEndpoint {
+    public func asAny() -> APIEndpoint<AnyResponseValue> {
+        return APIEndpoint<AnyResponseValue>(id: id, tag: tag, method: method, path: path, hasBody: hasBody, securityRequirement: securityRequirement)
+    }
+}
+
 extension APIResponseValue {
     public func asAny() -> AnyResponseValue {
         return AnyResponseValue(statusCode: statusCode, successful: successful, response: response, responseEnum: self, success: success)
@@ -179,11 +185,5 @@ extension APIResponse {
 extension APIRequest {
     public func asAny() -> AnyRequest {
         return AnyRequest(request: self)
-    }
-}
-
-extension APIService {
-    public func asAny() -> APIService<AnyResponseValue> {
-        return APIService<AnyResponseValue>(id: id, tag: tag, method: method, path: path, hasBody: hasBody, securityRequirement: securityRequirement)
     }
 }

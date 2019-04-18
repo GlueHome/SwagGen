@@ -91,10 +91,8 @@ extension APIResponse: CustomStringConvertible, CustomDebugStringConvertible {
 
     public var debugDescription: String {
         var string = description
-        if let response = result.value?.response {
-          if let debugStringConvertible = response as? CustomDebugStringConvertible {
-              string += "\n\(debugStringConvertible.debugDescription)"
-          }
+        if case let .success(response) = result {
+            string += "\n\(response.debugDescription)"
         }
         return string
     }
