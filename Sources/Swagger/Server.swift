@@ -18,9 +18,9 @@ public struct Server {
 extension Server: JSONObjectConvertible {
 
     public init(jsonDictionary: JSONDictionary) throws {
-        name = jsonDictionary.json(atKeyPath: "name") ?? jsonDictionary.json(atKeyPath: "x-name")
         url = try jsonDictionary.json(atKeyPath: "url")
         description = jsonDictionary.json(atKeyPath: "description")
+        name = description?.split(separator: " ").first.map { String($0).lowercased() }
         variables = jsonDictionary.json(atKeyPath: "variables") ?? [:]
     }
 }
